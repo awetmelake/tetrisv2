@@ -1,10 +1,36 @@
 //imports
+import Game from "./game.js";
+import Controller from "./controller.js";
+
+// instantiate game and controller
 const game = new Game();
-const controller = new Controller();
+const controller = new Controller(game);
+
+// controls keyListener
+window.addEventListener("keydown", event => {
+  controller.keyListener(event);
+});
+
+// initialize canvas
 const canvas = document.getElementById("display");
 const c = canvas.getContext("2d");
 c.scale(20, 20);
 
+// attach listener to start button element
+document.getElementById("start-button").addEventListener("click", () => {
+  game.start();
+});
+
+// images
+import j from "./images/j.png";
+import l from "./images/l.png";
+import line from "./images/line.png";
+import o from "./images/o.png";
+import s from "./images/s.png";
+import t from "./images/t.png";
+import z from "./images/z.png";
+
+// colors corresponding to peices
 const colors = [
   "black",
   "purple",
@@ -16,19 +42,10 @@ const colors = [
   "green"
 ];
 
-const images = [
-  null,
-  "./images/t.png",
-  "./images/o.png",
-  "./images/l.png",
-  "./images/j.png",
-  "./images/line.png",
-  "./images/z.png",
-  "./images/s.png"
-];
+const images = [null, j, l, line, o, s, t, z];
 
 //iterates over all the cells drawing the corresponding color for the value in that cell
-drawMatrix = matrix => {
+const drawMatrix = matrix => {
   let i, j;
   for (i = 0; i < matrix.length; i++) {
     for (j = 0; j < matrix[i].length; j++) {
@@ -46,9 +63,10 @@ drawMatrix = matrix => {
     }
   }
 };
+
 //draw coming peices
 const peiceDisplay = document.querySelectorAll(".p");
-drawNextPeices = peices => {
+const drawNextPeices = peices => {
   let i;
   let l = peices.length;
   for (i = 0; i < l; i++) {
@@ -57,15 +75,15 @@ drawNextPeices = peices => {
 };
 
 //update score
-updateScore = () => {
+const updateScore = () => {
   document.querySelector("h1").innerHTML = game.score;
 };
+
 //Engine//
 let dropCounter = 0;
 let lastTime = 0;
 
-update = (time = 0) => {
-
+export const update = (time = 0) => {
   if (game.isRunning === true) {
     let deltaTime = time - lastTime;
     lastTime = time;
@@ -82,5 +100,3 @@ update = (time = 0) => {
   updateScore();
   requestAnimationFrame(update);
 };
-
-update();
