@@ -1,4 +1,4 @@
 import { update } from "./display.js";
-import './index.sass'
-
+import "./main.sass";
+require("bootstrap");
 update();

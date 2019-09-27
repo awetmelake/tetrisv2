@@ -11,7 +11,7 @@ window.addEventListener("keydown", event => {
   controller.keyListener(event);
 });
 
-// initialize canvas
+// create canvas
 const canvas = document.getElementById("display");
 const c = canvas.getContext("2d");
 c.scale(20, 20);
@@ -21,7 +21,7 @@ document.getElementById("start-button").addEventListener("click", () => {
   game.start();
 });
 
-// images
+// import peiceDisplay images
 import j from "./images/j.png";
 import l from "./images/l.png";
 import line from "./images/line.png";
@@ -29,6 +29,7 @@ import o from "./images/o.png";
 import s from "./images/s.png";
 import t from "./images/t.png";
 import z from "./images/z.png";
+const images = [null, j, l, line, o, s, t, z];
 
 // colors corresponding to peices
 const colors = [
@@ -41,8 +42,6 @@ const colors = [
   "red",
   "green"
 ];
-
-const images = [null, j, l, line, o, s, t, z];
 
 //iterates over all the cells drawing the corresponding color for the value in that cell
 const drawMatrix = matrix => {
@@ -99,4 +98,14 @@ export const update = (time = 0) => {
   drawNextPeices(game.comingTets);
   updateScore();
   requestAnimationFrame(update);
+};
+
+// alert functions
+const alert = document.getElementById("alert");
+export const setAlert = input => {
+  alert.innerHTML = input;
+};
+export const toggleAlert = () => {
+  alert.hidden = !alert.hidden;
+  console.log(alert.hidden)
 };

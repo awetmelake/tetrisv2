@@ -25,8 +25,8 @@ class Controller {
       pause: 80
     };
     //change above code for control customization
-
   }
+
   keyListener = e => {
     const {
       down,
@@ -58,10 +58,10 @@ class Controller {
         case unrotate:
           this.game.rotate(-1);
           break;
-        case pause:
-          this.game.pause();
-          break;
       }
+    }
+    if (e.keyCode === pause) {
+      this.game.pause();
     }
   };
 }

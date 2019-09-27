@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tetris</title>
+    <!-- <script src="controller.js"></script> -->
+    <!-- <script src="game.js"></script> -->
+    <!-- <link rel="stylesheet" href="./index.scss" /> -->
+    <!-- <script type="module" src="Game.js"></script> -->
+  </head>
+
+  <body>
+    <nav class="navbar navbar-dark bg-dark">
+      <span class="navbar-brand mb-0 h1 center" href="#">TETRIS.JS</span>
+      <ul class="navbar-nav text-light">
+        <li>
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-toggle="modal"
+            data-target="#controlsModal"
+          >
+            Controls
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <div class="main">
+      <div class="game-container">
+        <span id="alert" hidden></span>
+
+        <h1 class="score"></h1>
+
+        <!-- display -->
+        <canvas id="display" width="200" height="440"> </canvas>
+
+        <button id="start-button" class="btn-success " name="Start Game">
+          Start
+        </button>
+
+        <div class="coming">
+          <h2>NEXT</h2>
+          <img class="p" src="#" alt="" /> <img class="p" src="#" alt="" />
+          <img class="p" src="#" alt="" /> <img class="p" src="#" alt="" />
+        </div>
+      </div>
+
+      <!-- start of controls modal -->
+      <div class="modal" tabindex="-1" role="dialog" id="controlsModal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content bg-dark">
+            <div class="modal-header">
+              <h5 class="modal-title text-light">CONTROLS</h5>
+              <button
+                type="button"
+                class="close text-light"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="controls">
+                <h5 class="text-light">
+                  Move peice
+                  <p class="mb-0 float-right">arrows</p>
+                </h5>
+                <h5 class="text-light">
+                  Rotate
+                  <p class="mb-0 float-right">z</p>
+                </h5>
+                <h5 class="text-light">
+                  Unrotate
+                  <p class="mb-0 float-right">x</p>
+                </h5>
+                <h5 class="text-light">
+                  Hard drop
+                  <p class="mb-0 float-right">space</p>
+                </h5>
+                <h5 class="text-light">
+                  Pause
+                  <p class="mb-0 float-right">p</p>
+                </h5>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- end of controls modal -->
+    </div>
+    <!-- <script src="./dist/main.js"></script> -->
+  </body>
+</html>

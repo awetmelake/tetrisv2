@@ -1,3 +1,5 @@
+@import "~bootstrap/scss/bootstrap"
+
 // variables
 $backgroundColor: white
 
@@ -12,10 +14,15 @@ body
   background-color: $backgroundColor
   font-family: arial
 
+.main
+  display: flex
+  align-items: center
+  justify-content: center
+
+
 .game-container
   min-width: 470px
   width: fit-content
-  margin: auto
   text-align: center
 
   .score
@@ -32,41 +39,37 @@ body
     background-color: lightgray
     border-radius: 5px
     color: black
-    font-size: 1.5em
+    // font-size: 1.5em
     padding: 1em
     top: 200px
-    left: calc(50vw - 150px)
+    left: calc(50vw - 135px)
     width: 240px
 
   #start-button
-    padding: 0.5em 1em
-    background-color: lightgreen
+    padding: 0.25em .5em
     border: none
     border-radius: 5px
     font-size: 1.3em
     float: left
     position: relative
     top: 20px
-    color: black
-    margin-right: 1em
     cursor: pointer
 
   .coming
     float: right
     display: flex
     flex-direction: column
-
     img
-      width: 100px
+      width: 90px
       float: left
-      margin: 2em 0
+      margin: 20px 0
 
   .controls
-    width: 200px
-    font-size: 1.3em
-    border: 2px solid black
-    padding: 1em
-    margin: 3em auto
+    // width: 200px
+    // font-size: 1.3em
+    // border: 2px solid black
+    // padding: 1em
+    // margin: 3em auto
 
     h3
       margin-bottom: 1em

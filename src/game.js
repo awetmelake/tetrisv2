@@ -1,3 +1,5 @@
+import { setAlert, toggleAlert } from "./display.js";
+
 // Game logic
 class Game {
   constructor() {
@@ -132,24 +134,25 @@ class Game {
   // Methods //
   start = () => {
     this.isRunning = true;
-    let alert = document.getElementById("alert");
+    const alert = document.getElementById("alert");
     alert.hidden = true;
-    let startBtn = document.getElementById("start-button");
+    const startBtn = document.getElementById("start-button");
     startBtn.disabled = true;
     startBtn.style.color = "gray";
     this.spawnTet();
   };
 
   pause = () => {
-    let alert = document.getElementById("alert");
     //if comingTets is empty user never started game and therefore cannot pause
-    if (this.isRunning && Object.entries(this.comingTets).length !== 0) {
-      alert.innerHTML = "Press p to unpause";
+    const gameStarted = Object.entries(this.comingTets).length > 0;
+    console.log(gameStarted)
+    if (this.isRunning && gameStarted) {
+      setAlert(`Paused <br> press p to unpause`);
       this.isRunning = false;
-      alert.hidden = false;
-    } else if (Object.entries(this.comingTets).length !== 0) {
+      toggleAlert();
+    } else if (!this.isRunning && gameStarted) {
       this.isRunning = true;
-      alert.hidden = true;
+      toggleAlert();
     }
   };
 
@@ -174,7 +177,6 @@ class Game {
   //spawns new tetrimino, keep comingTets filled, calls gameover() if tet spawns on top of stack
   spawnTet = () => {
     while (this.comingTets.length < 5) {
-      console.log(this.peices)
       this.comingTets.push(this.pieces[Math.floor(Math.random() * 7)]);
     }
     let ct = this.currentTet;
