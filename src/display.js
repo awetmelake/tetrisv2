@@ -6,20 +6,12 @@ import Controller from "./controller.js";
 const game = new Game();
 const controller = new Controller(game);
 
-// controls keyListener
-window.addEventListener("keydown", event => {
-  controller.keyListener(event);
-});
 
 // create canvas
 const canvas = document.getElementById("display");
 const c = canvas.getContext("2d");
 c.scale(20, 20);
 
-// attach listener to start button element
-document.getElementById("start-button").addEventListener("click", () => {
-  game.start();
-});
 
 // import peiceDisplay images
 import j from "./images/j.png";

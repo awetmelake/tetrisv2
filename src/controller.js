@@ -25,6 +25,16 @@ class Controller {
       pause: 80
     };
     //change above code for control customization
+
+    // controls keyListener
+    window.addEventListener("keydown", event => {
+      this.keyListener(event);
+    });
+
+    // attach listener to start button element
+    document.getElementById("start-button").addEventListener("click", () => {
+      this.game.start();
+    });
   }
 
   keyListener = e => {
