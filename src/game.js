@@ -231,10 +231,14 @@ class Game {
     target: while (this.checkCollision() !== false) {
       if (this.checkCollision() === "wall") {
         ct.x < 6 ? (ct.x += pushX) : (ct.x -= pushX);
+        pushX++;
       }
-      pushX++;
+      if (this.checkCollision() === "stack") {
+        ct.y -= pushY;
+        pushY++;
+      }
       //catch infinite looping
-      if (pushX > 4) {
+      if (pushX > 10) {
         ct.orientation = reset;
         break target;
       }
@@ -298,10 +302,13 @@ class Game {
       for (let j = 0; j < l; j++) {
         if (matrix[i][j] !== 0) {
           if (ct.x + j > 9 || ct.x + j < 0) {
+            // console.log("wall");
             return "wall";
           } else if (ct.y + j < -1) {
+            // console.log("ceiling");
             return "ceiling";
           } else if (ct.y + i > 21 || b[i + ct.y][j + ct.x] !== 0) {
+            // console.log("stack");
             return "stack";
           }
         }
