@@ -21,7 +21,7 @@ import o from "./images/o.png";
 import s from "./images/s.png";
 import t from "./images/t.png";
 import z from "./images/z.png";
-const images = [null, j, l, line, o, s, t, z];
+const images = [null, t, o, l, j, line, z, s];
 
 // colors corresponding to peices
 const colors = [
